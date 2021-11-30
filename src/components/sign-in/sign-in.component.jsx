@@ -43,7 +43,7 @@ class SingIn extends React.Component {
                     <FormInput onChange={this.handleChange} name="password" value="password" required  label="Password" />
                     <div className="buttons">
                         <CustomButton type="submit">Sign In</CustomButton>
-                        <CustomButton onClick={this.onClick} isGoogleSignIn>Sign in with google</CustomButton>
+                        <CustomButton type="button" onClick={this.onClick} isGoogleSignIn>Sign in with google</CustomButton>
                     </div>
                 </form>
             </div>

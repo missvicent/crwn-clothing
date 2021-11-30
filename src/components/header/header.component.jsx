@@ -11,7 +11,9 @@ import {ReactComponent as Logo} from "./../../assets/img/crown.svg";
 const Header = ({ currentUser }) => {
 
     const signOut = () => {
-        return signOutGoogle();
+        console.log(1)
+        signOutGoogle();
+        console.log(currentUser)
     }
 
     return (<div className="header">
@@ -26,7 +28,7 @@ const Header = ({ currentUser }) => {
         </div>
         <div className="options">
         {
-            currentUser ? <div className="option" onClick={signOut}>SIGN OUT</div> : 
+            currentUser !== null ? <div className="option" onClick={signOut}>SIGN OUT</div> : 
             <Link to="/login" className="option">Sign In</Link>
         }
         </div>

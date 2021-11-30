@@ -8,7 +8,8 @@ import HatsPage from './pages/hatspage/hatspage';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component"
 import Header  from './components/header/header.component';
-import { auth } from './firebase/firebase.utils';
+import { auth, db } from './firebase/firebase.utils';
+import { onSnapshot, doc } from "firebase/firestore";
 
 class App extends React.Component {
 
@@ -23,7 +24,19 @@ class App extends React.Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
+      if (user) {
+        onSnapshot(doc(db, `users/${user.uid}`), (doc) => {
+          const snap = doc.data;
+          const {id, ...props} = snap;
+          this.setState({
+            currentUser: {
+              id,
+              ...props
+            }
+          })
+        });
+        this.setState({currentUser: user});
+      }
     });
   }
 
