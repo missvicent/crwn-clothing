@@ -6,6 +6,7 @@ import './App.css';
 import HomePage from './pages/homepage/homepage';
 import HatsPage from './pages/hatspage/hatspage';
 import ShopPage from './pages/shop/shop.component';
+import CheckoutPage from './pages/checkout/checkout.page';
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component"
 import Header  from './components/header/header.component';
 import { auth, db } from './firebase/firebase.utils';
@@ -52,6 +53,7 @@ class App extends React.Component {
       <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/hats" element={<HatsPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/shop" element={<ShopPage />} />
       <Route exact path="/login" element={<SignInAndSignUpPage/>}/>
       <Route
